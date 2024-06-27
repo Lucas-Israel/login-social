@@ -46,14 +46,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         when (v?.id) {
-            // Email validation
             R.id.login_button -> {
+                // email validation
                 val emailText = email.editText?.text.toString()
                 val isEmailValid: Boolean = Patterns.EMAIL_ADDRESS.matcher(emailText).matches()
-                val passText = pass.editText?.text.toString()
                 if (!isEmailValid) {
                     email.error = getString(R.string.email_warning)
                 }
+
+                // password validation
+                val passText = pass.editText?.text.toString()
                 if (passText.length < 4) {
                     pass.error = getString(R.string.password_warning)
                 }
