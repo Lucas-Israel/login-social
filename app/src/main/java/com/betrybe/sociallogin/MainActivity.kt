@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     return
                 }
 
+                // show a successful login message on top of the login button
                 Snackbar.make(loginBtn, R.string.login_succeeded, Snackbar.LENGTH_SHORT)
                     .setAnchorView(loginBtn)
                     .show()
