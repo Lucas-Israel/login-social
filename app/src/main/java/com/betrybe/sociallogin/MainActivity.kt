@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -52,14 +53,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val isEmailValid: Boolean = Patterns.EMAIL_ADDRESS.matcher(emailText).matches()
                 if (!isEmailValid) {
                     email.error = getString(R.string.email_warning)
+                    return
                 }
 
                 // password validation
                 val passText = pass.editText?.text.toString()
                 if (passText.length < 4) {
                     pass.error = getString(R.string.password_warning)
+                    return
                 }
-                //
+
+                Snackbar.make(loginBtn, R.string.login_succeeded, Snackbar.LENGTH_SHORT)
+                    .setAnchorView(loginBtn)
+                    .show()
             }
             //
         }
